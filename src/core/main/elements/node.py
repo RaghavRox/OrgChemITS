@@ -1,3 +1,4 @@
 class node:
-    def __init__(self) -> None:
-        pass
+
+    def __init__(self,bonds) -> None:
+        self.connectedNodes = bonds
