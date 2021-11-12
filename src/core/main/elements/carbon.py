@@ -1,7 +1,5 @@
 from node import node
 
-
-
 class carbon(node):
 
     __symbol = ("C")
