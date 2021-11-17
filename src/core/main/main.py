@@ -1,4 +1,5 @@
-#from elements.carbon import carbon
+from core.main.elements.carbon import carbon
+
 
 #GUI calls this function which returns name and description
 def mainAlgo(lines):

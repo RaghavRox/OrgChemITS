@@ -1,4 +1,4 @@
-from elements.node import node
+from core.main.elements.node import node
 
 class carbon(node):
 
