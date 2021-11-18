@@ -3,7 +3,7 @@ class node:
     __connectedNodes = []
 
     def __init__(self,cords) -> None:
-        self.cords = cords
+        self.__cords = cords
 
 
     def setConnectedNodes(self , node):
