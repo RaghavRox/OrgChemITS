@@ -11,7 +11,7 @@ from core.main import main
 # if __name__ == "__main__" :
 #     MyApp().run()
 
-testCompounds = [[[0,0,1,1],[2,0,1,1],[2,0,5,5]]]
+testCompounds = [[[0,0,1,1]],[[0,0,1,1],[2,0,1,1]],[[0,0,1,1],[2,0,1,1],[2,0,5,5]],[[0,0,1,1],[2,0,1,1],[2,0,5,5],[5,5,9,9]],[[0,0,1,1],[2,0,1,1],[2,0,5,5],[5,5,9,9],[6,7,9,9]],[[0,0,1,1],[2,0,1,1],[2,0,5,5],[5,5,9,9],[6,7,9,9],[5,5,12,12]],[[0,0,1,1],[2,0,1,1],[2,0,5,5],[5,5,9,9],[6,7,9,9],[5,5,12,12],[5,5,78,78]]]
 
 # for node in main.mainAlgo(testCompounds[0]):
 #     print(node.getCords())
@@ -20,4 +20,5 @@ testCompounds = [[[0,0,1,1],[2,0,1,1],[2,0,5,5]]]
 #         print(lol.getCords())
 #     print("next node")
 
-print(main.mainAlgo(testCompounds[0]))
+for test in testCompounds:
+    print(main.mainAlgo(test))
