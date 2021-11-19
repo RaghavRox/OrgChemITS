@@ -1,9 +1,8 @@
 class node:
 
-    __connectedNodes = []
-
     def __init__(self,cords) -> None:
         self.__cords = cords
+        self.__connectedNodes = []
 
 
     def setConnectedNodes(self , node):
@@ -15,3 +14,6 @@ class node:
 
     def getConnectedNodes(self):
         return self.__connectedNodes
+
+    def getCords(self):
+        return self.__cords

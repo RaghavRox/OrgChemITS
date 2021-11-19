@@ -23,8 +23,7 @@ def mainAlgo(lines):
     for key in nodes:
         nodeList.append(nodes[key])
     
-    return kesh.temp(nodeList)
-
+    return kesh.main(nodeList)
 
 #takes image and returns image with detected lines and also a list of lines
 def detectLines():
