@@ -41,7 +41,7 @@ class kesh:
 
 
 
-        return possibleMainChains
+        return kesh.findFinalMainChain(possibleMainChains)
 
     @staticmethod
     def findLongestChainLength(node , prevNode = None):
@@ -72,3 +72,20 @@ class kesh:
                             x.append(fNode)
                             return x
                     
+    @staticmethod
+    def findFinalMainChain(possibleMainChains):
+        branches = []
+        for chain in possibleMainChains:
+            chainLength = 0
+            for node in chain:
+                chainLength+= len(node.getConnectedNodes())
+            branches.append(chainLength)
+        
+        maxBranches = max(branches)
+
+        for chain in possibleMainChains:
+            chainLength = 0
+            for node in chain:
+                chainLength+= len(node.getConnectedNodes())
+            if chainLength == maxBranches:
+                return chain
