@@ -13,7 +13,8 @@ class node:
             return False
 
     def getConnectedNodes(self):
-        return self.__connectedNodes
+        connectedNodes = self.__connectedNodes.copy()
+        return connectedNodes
 
     def getCords(self):
         return self.__cords

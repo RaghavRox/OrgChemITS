@@ -8,12 +8,21 @@ class kesh:
             if len(node.getConnectedNodes())==1:
                 leafNodes.append(node)
         
-        maxLength = 0
+        leafNodeMaxLengthList = []
         
         for leafNode in leafNodes:
-            maxLength = max(kesh.findLongestChain(leafNode),maxLength)
+            leafNodeMaxLengthList.append(kesh.findLongestChain(leafNode))
 
-        return maxLength
+        maxLength = max(leafNodeMaxLengthList)
+        ind = 0
+        leafNodesWithMaxLength = []
+        for l in leafNodeMaxLengthList:
+            if l==maxLength:
+                leafNodesWithMaxLength.append(leafNodes[ind])
+            ind+=1
+        
+
+        return leafNodesWithMaxLength
 
     @staticmethod
     def findLongestChain(node , prevNode = None):
@@ -27,3 +36,19 @@ class kesh:
             for connectedNode in connectedNodes:
                 shtList.append(kesh.findLongestChain(connectedNode,node))
             return max(shtList)+1
+    
+    @staticmethod
+    def findMainChain(fNode , prevNode , lNode):
+        if fNode == lNode:
+            return [fNode]
+        else:
+            connectedNodes = fNode.getConnectedNodes()
+            if prevNode in connectedNodes:
+                connectedNodes.remove(prevNode)
+            if len(connectedNodes)!=0:
+                for node in connectedNodes:
+                    x = kesh.findMainChain(node,fNode,lNode)
+                    if len(x)!=0:
+                        return x.append(node)
+                    else:
+                        continue
