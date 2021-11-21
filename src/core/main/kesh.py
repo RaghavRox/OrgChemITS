@@ -3,6 +3,9 @@ class kesh:
 
     @staticmethod
     def main(nodeList):
+        if len(nodeList)==0:
+            return "methane"
+
         #find leaf nodes
         leafNodes =[]
         for node in nodeList:

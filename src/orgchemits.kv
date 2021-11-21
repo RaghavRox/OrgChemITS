@@ -11,10 +11,16 @@
 <WelcomePage>:
     size: root.width, root.height
     Label:
-        text: '[color=ff3333]Hello[/color][color=3333ff]World[/color]'
+        text: '[color=3333ff]OrgChemITS[/color]'
         markup: True,
         font_size: 32
     Label:
-        text: 'lanja'
-    
-    
+        text: '[color=ff3333]Made by Edara Bala Mukesh(2019A7PS0081P), Muppirisetty R Bharadwaj(2019A7PS0025P), Harshavardhan(2019A7PS0099P)[/color]'
+        markup: True
+        height: self.texture_size[1]  # the size needed to fit the text
+        text_size: self.width, self.height
+    Label:
+        text: '[color=ff3333]This project only works for acyclic alkanes. This system produces accurate results only if the image is clear without any other noise. To get correct results please keep an angle of 120 degrees between carbon bonds. Blurred images will generate incorrect results[/color][color=3333ff]click to continue and choose image[/color]'
+        markup: True
+        height: self.texture_size[1]  # the size needed to fit the text
+        text_size: self.width, self.height
