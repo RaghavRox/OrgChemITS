@@ -11,7 +11,7 @@ Follow the below instructions to setup and  run the OrgChemITS app
 git clone https://github.com/RaghavRox/OrgChemITS.git<br />
 cd OrgChemITS<br />
 pip install opencv-python opencv-contrib-python pylsd-nova matplotlib<br />
-pip install  kivy[full] />
+pip install  kivy[full] <br/>
 
 # Run the app
 Run the following commands one by one in your terminal<br />
