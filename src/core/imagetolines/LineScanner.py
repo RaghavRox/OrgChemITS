@@ -257,4 +257,3 @@ def get_distance(line1, line2):
     return min(dist1, dist2, dist3, dist4)
 
 
-print(process_lines("test47.jpg"))
