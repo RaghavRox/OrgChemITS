@@ -16,7 +16,7 @@ pip install  kivy[full] <br/>
 # Run the app
 Run the following commands one by one in your terminal<br />
 cd src<br />
-python __main__.py<br />
+python main.py<br />
 
 # Testing
 Use the test images provided to run the app to make sure it works
