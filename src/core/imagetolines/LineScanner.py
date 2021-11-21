@@ -5,7 +5,7 @@ import math
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from pylsd import lsd
-
+ 
 
 def process_lines(image_src):
     img = cv2.imread(image_src)
@@ -14,7 +14,7 @@ def process_lines(image_src):
     ret, thresh1 = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
     thresh1 = cv2.bitwise_not(thresh1)
 
-    lines = lsd(gray, scale=0)
+    lines = lsd(gray, scale=0.5)
     lines = [x[:-1] for x in lines]
     for i in range(len(lines)):
         lines[i] = [int(x) for x in lines[i]]
@@ -89,14 +89,18 @@ def process_lines(image_src):
     
     
     
-    my_img_1 = np.zeros((600, 800, 3), dtype = "uint8")
-    my_img_1[:,:] = (255,255,255)  
-
+    new_img = np.zeros((600, 800, 3), dtype = "uint8")
+    new_img[:,:] = (255,255,255)  
+    for line in merged_lines_all:
+        cv2.line(new_img, (line[0][0], line[0][1]),
+                 (line[1][0], line[1][1]), (0, 0, 255), 1)
+    new_name=image_src.split('.jpg')[0]+"_converted.jpg"
+    cv2.imwrite(new_name, new_img)
     """cv2.imshow('prediction/lines_lines.jpg', img)
     cv2.imshow('prediction/merged_lines.jpg', img_merged_lines)
     cv2.waitKey(0)
     cv2.destroyAllWindows()"""
-    return [list(x[0]+x[1]) for x in merged_lines_all]
+    return [new_name ,[list(x[0]+x[1]) for x in merged_lines_all]]
      
 
 
@@ -251,3 +255,6 @@ def get_distance(line1, line2):
                               line1[0][0], line1[0][1], line1[1][0], line1[1][1])
 
     return min(dist1, dist2, dist3, dist4)
+
+
+print(process_lines("test47.jpg"))
