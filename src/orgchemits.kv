@@ -1,0 +1,20 @@
+#:kivy 2.0
+
+<RootWidget>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 0.9
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<WelcomePage>:
+    size: root.width, root.height
+    Label:
+        text: '[color=ff3333]Hello[/color][color=3333ff]World[/color]'
+        markup: True,
+        font_size: 32
+    Label:
+        text: 'lanja'
+    
+    
