@@ -10,7 +10,7 @@ Follow the below instructions to setup and  run the OrgChemITS app
 3.Run the following commands one by one in your terminal<br />
 git clone https://github.com/RaghavRox/OrgChemITS.git<br />
 cd OrgChemITS<br />
-python install -r requirements.txt<br />
+pip install -r requirements.txt<br />
 
 # Run the app
 Run the following commands one by one in your terminal<br />
