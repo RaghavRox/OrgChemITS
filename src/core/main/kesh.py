@@ -39,9 +39,11 @@ class kesh:
                 j+=1
             i+=1
 
-
-
-        return kesh.findFinalMainChain(possibleMainChains)
+        mainChain=[]
+        mainChain=kesh.findOrderOfFinalChain(kesh.findFinalMainChain(possibleMainChains))
+        # return kesh.findOrderOfFinalChain(kesh.findFinalMainChain(possibleMainChains))
+        return kesh.getName(mainChain)
+        
 
     @staticmethod
     def findLongestChainLength(node , prevNode = None):
@@ -89,3 +91,97 @@ class kesh:
                 chainLength+= len(node.getConnectedNodes())
             if chainLength == maxBranches:
                 return chain
+       
+
+    @staticmethod
+    def findOrderOfFinalChain(finalChain):
+        length = len(finalChain)
+        sideChains=[]
+        x=[]
+        y=0
+        sum=(0,0)
+        for node in finalChain:
+            y+=1
+            x=list(set(node.getConnectedNodes()).difference(finalChain))
+            if len(x)!=0:
+                for i in x:
+                    sideChains.append((y,i))
+        if len(sideChains) != 0:
+            for x in sideChains:
+                sum = (sum[0]+x[0],sum[1]+length-x[0]+1)
+
+            if sum[0]>sum[1]:
+                return finalChain[::-1]
+            if sum[1]>sum[0]:
+                return finalChain
+            if sum[0] is sum[1]:
+                return finalChain
+        else :
+            return finalChain
+
+    @staticmethod
+    def getName(mainchain):
+        sideChains=[]
+        smChain=[]
+        sideChainsOfSideChains=[]
+        ln=0
+        y=0
+        num=0
+        name=""
+        smallName=""
+        length = len(mainchain)
+        smallName=kesh.carbons[length-1]
+        name = name + smallName + "ane"
+        for node in mainchain:
+            y+=1
+            x=list(set(node.getConnectedNodes()).difference(mainchain))
+            if len(x)!=0:
+                for i in x:
+                    sideChains.append((y,i))
+                    smallName=kesh.carbons[kesh.findLongestChainLength(i,node)-1] + "yl "
+                    # name = str(y) + "-" +smallName + name
+                    smChain=kesh.findMainOfSideChain(i,node)
+                    for smcnode in smChain:
+                        num+=1
+                        z=list(set(smcnode.getConnectedNodes()).difference(smChain+[node]))
+                        # print(len(z),len(smChain))
+                        if len(z)!=0:
+                            var = len(z)
+                            while var>0:
+                                if(var>0):
+                                    ln=kesh.findLongestChainLength(z[var-1],smcnode) -1
+                                var-=1
+
+                                smallName= str(num) + "-" +kesh.carbons[ln] + "yl " + smallName
+                    name = str(y) + "-" + smallName + name
+                    
+
+        return name
+
+    @staticmethod
+    def findMainOfSideChain(node,prevNode):
+
+        mainChainLength = kesh.findLongestChainLength(node,prevNode)
+        nodeList =[]
+        depth = 0
+        msc=[]
+        def lanja(currentNode,previousNode,depth):
+            x= currentNode.getConnectedNodes()
+            x.remove(previousNode)
+            depth+=1
+            if len(x)==0:
+                if depth==mainChainLength:
+                    nodeList.append(currentNode)
+                    return None
+            else:    
+                for labbe in x:
+                    if(lanja(labbe, currentNode,depth)==None):
+                        break
+                    
+                return None
+            depth = depth-1
+        
+        lanja(node,prevNode,depth)
+        nodeList.append(node)
+        msc=kesh.findMainChain(nodeList[1],prevNode,nodeList[0])
+        return msc[::-1]
